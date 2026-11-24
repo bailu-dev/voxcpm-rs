@@ -300,8 +300,6 @@ Emits `VOXCPM_BENCH_JSON`, per-run `VOXCPM_RUN_JSON`, `VOXCPM_QUANT_JSON`, and `
 
 ## Metal inference optimizations
 
-The 2026-10-04 M4 Pro run measured 10-step RTF **0.766 → 0.738** with the activation fusions (3.7% less wall time, PCM correlation ≥0.9999999993). The **12-step** default with FP bridges measured RTF **0.833**, and all 21 quality-fixture runs stayed below 1 (worst **0.922**). These are warmed Metal measurements. [Detailed experiment log](https://github.com/bailu-obj/bailu/blob/78c49626de96592f829c974309a8d78f0bb9fa47/docs/voxcpm2_rtf_baseline.md#2026-10-04-fused-activations-and-12-step-preset)
-
 VoxCPM2 DiT/LM inference is **launch-overhead-bound** on Metal (many tiny kernels per Euler step), not weight-bandwidth-bound. Defaults cut dispatches without changing math:
 
 | Optimization | Where | Escape hatch |
